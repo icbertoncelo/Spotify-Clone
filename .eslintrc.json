@@ -24,6 +24,6 @@
     "import/prefer-default-export": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-max-props-per-line": [1, { "when": "always" }],
-    "max-len": ["error", { "code": 80 }, { "ignoreUrls": true }]
+    "max-len": ["error", { "code": 90, "ignoreUrls": true }]
   }
 }
