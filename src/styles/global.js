@@ -9,6 +9,17 @@ const GlobalStyle = createGlobalStyle`
     outline: 0
   };
 
+  ::-webkit-scrollbar {
+      width: 15px;
+      background: #282828;
+  }
+  ::-webkit-scrollbar-track-piece {
+    background-color: #181818;
+  }
+  ::-webkit-scrollbar-thumb {
+      background: #b3b3b3;
+  }
+
   html, body, #root {
     height: 100%
   }
