@@ -1,64 +1,65 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as PlaylistsActions } from '../../store/ducks/playlists';
 
 import {
   Container, Title, List, Playlist,
 } from './styles';
 
-const Browse = () => (
-  <Container>
-    <Title>Browse</Title>
+class Browse extends Component {
+  static propTypes = {
+    getPlaylisRequest: PropTypes.func.isRequired,
+    playlists: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string,
+          thumbnail: PropTypes.string,
+          description: PropTypes.string,
+        }),
+      ),
+    }).isRequired,
+  };
 
-    <List>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://static.fnac-static.com/multimedia/Images/PT/NR/72/36/0c/800370/1540-1/tsp20160818085632/Amid-the-Noisette-and-Haste.jpg"
-          alt="Playlist"
-        />
-        <strong>Flashback</strong>
-        <p>Relax in your trips</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://static.fnac-static.com/multimedia/Images/PT/NR/72/36/0c/800370/1540-1/tsp20160818085632/Amid-the-Noisette-and-Haste.jpg"
-          alt="Playlist"
-        />
-        <strong>Flashback</strong>
-        <p>Relax in your trips</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://static.fnac-static.com/multimedia/Images/PT/NR/72/36/0c/800370/1540-1/tsp20160818085632/Amid-the-Noisette-and-Haste.jpg"
-          alt="Playlist"
-        />
-        <strong>Flashback</strong>
-        <p>Relax in your trips</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://static.fnac-static.com/multimedia/Images/PT/NR/72/36/0c/800370/1540-1/tsp20160818085632/Amid-the-Noisette-and-Haste.jpg"
-          alt="Playlist"
-        />
-        <strong>Flashback</strong>
-        <p>Relax in your trips</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://static.fnac-static.com/multimedia/Images/PT/NR/72/36/0c/800370/1540-1/tsp20160818085632/Amid-the-Noisette-and-Haste.jpg"
-          alt="Playlist"
-        />
-        <strong>Flashback</strong>
-        <p>Relax in your trips</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://static.fnac-static.com/multimedia/Images/PT/NR/72/36/0c/800370/1540-1/tsp20160818085632/Amid-the-Noisette-and-Haste.jpg"
-          alt="Playlist"
-        />
-        <strong>Flashback</strong>
-        <p>Relax in your trips</p>
-      </Playlist>
-    </List>
-  </Container>
-);
+  componentDidMount() {
+    const { getPlaylisRequest } = this.props;
+    getPlaylisRequest();
+  }
 
-export default Browse;
+  render() {
+    const { playlists } = this.props;
+
+    return (
+      <Container>
+        <Title>Browse</Title>
+
+        <List>
+          {playlists.data.map(playlist => (
+            <Playlist to={`playlists/${playlist.id}`}>
+              <img
+                src={playlist.thumbnail}
+                alt={playlist.title}
+              />
+              <strong>{playlist.title}</strong>
+              <p>{playlist.description}</p>
+            </Playlist>
+          ))}
+        </List>
+      </Container>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  playlists: state.playlists,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(PlaylistsActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Browse);
