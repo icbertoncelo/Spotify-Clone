@@ -32,14 +32,18 @@ const Player = ({ player }) => (
       />
     )}
     <Current>
-      <img
-        src="https://static.fnac-static.com/multimedia/Images/PT/NR/72/36/0c/800370/1540-1/tsp20160818085632/Amid-the-Noisette-and-Haste.jpg"
-        alt="Soja"
-      />
-      <div>
-        <span>I Believe</span>
-        <small>SOJA</small>
-      </div>
+      {!!player.currentSong && (
+        <>
+          <img
+            src={player.currentSong.thumbnail}
+            alt={player.currentSong.title}
+          />
+          <div>
+            <span>{player.currentSong.title}</span>
+            <small>{player.currentSong.author}</small>
+          </div>
+        </>
+      )}
     </Current>
 
     <Progress>
@@ -107,6 +111,8 @@ Player.propTypes = {
   player: PropTypes.shape({
     currentSong: PropTypes.shape({
       file: PropTypes.string,
+      thumbnail: PropTypes.string,
+      author: PropTypes.string,
     }),
     status: PropTypes.string,
   }).isRequired,
