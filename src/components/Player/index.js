@@ -28,18 +28,12 @@ import RepeatIcon from '../../assets/images/repeat.svg';
 const Player = ({ player, play, pause }) => (
   <Container>
     {!!player.currentSong && (
-      <Sound
-        url={player.currentSong.file}
-        playStatus={player.status}
-      />
+      <Sound url={player.currentSong.file} playStatus={player.status} />
     )}
     <Current>
       {!!player.currentSong && (
         <>
-          <img
-            src={player.currentSong.thumbnail}
-            alt={player.currentSong.title}
-          />
+          <img src={player.currentSong.thumbnail} alt={player.currentSong.title} />
           <div>
             <span>{player.currentSong.title}</span>
             <small>{player.currentSong.author}</small>
@@ -51,49 +45,25 @@ const Player = ({ player, play, pause }) => (
     <Progress>
       <Controls>
         <button type="button">
-          <img
-            src={ShuffleIcon}
-            alt="Shuffle"
-          />
+          <img src={ShuffleIcon} alt="Shuffle" />
         </button>
         <button type="button">
-          <img
-            src={BackwardIcon}
-            alt="Backward"
-          />
+          <img src={BackwardIcon} alt="Backward" />
         </button>
         {!!player.currentSong && player.status === Sound.status.PLAYING ? (
-          <button
-            type="button"
-            onClick={pause}
-          >
-            <img
-              src={PauseIcon}
-              alt="Pause"
-            />
+          <button type="button" onClick={pause}>
+            <img src={PauseIcon} alt="Pause" />
           </button>
         ) : (
-          <button
-            type="button"
-            onClick={play}
-          >
-            <img
-              src={PlayIcon}
-              alt="Play"
-            />
+          <button type="button" onClick={play}>
+            <img src={PlayIcon} alt="Play" />
           </button>
         )}
         <button type="button">
-          <img
-            src={ForwardIcon}
-            alt="Forward"
-          />
+          <img src={ForwardIcon} alt="Forward" />
         </button>
         <button type="button">
-          <img
-            src={RepeatIcon}
-            alt="Repeat"
-          />
+          <img src={RepeatIcon} alt="Repeat" />
         </button>
       </Controls>
       <Time>
@@ -110,10 +80,7 @@ const Player = ({ player, play, pause }) => (
     </Progress>
 
     <Volume>
-      <img
-        src={VolumeIcon}
-        alt="Volume"
-      />
+      <img src={VolumeIcon} alt="Volume" />
       <Slider
         railStyle={{ background: '#404040', borderRadius: 10 }}
         trackStyle={{ background: '#fff' }}

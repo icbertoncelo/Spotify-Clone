@@ -11,14 +11,8 @@ import CloseIcon from '../../assets/images/close.svg';
 const ErrorBox = ({ error: { message, visible }, hideError }) => visible && (
 <Container>
   <p>{message}</p>
-  <button
-    type="button"
-    onClick={hideError}
-  >
-    <img
-      src={CloseIcon}
-      alt="Close"
-    />
+  <button type="button" onClick={hideError}>
+    <img src={CloseIcon} alt="Close" />
   </button>
 </Container>
 );

@@ -81,10 +81,7 @@ class Playlist extends Component {
     return (
       <Container>
         <Header>
-          <img
-            src={playlist.thumbnail}
-            alt={playlist.title}
-          />
+          <img src={playlist.thumbnail} alt={playlist.title} />
 
           <div>
             <span>PLAYLIST</span>
@@ -95,20 +92,14 @@ class Playlist extends Component {
           </div>
         </Header>
 
-        <SongList
-          cellPadding={0}
-          cellSpacing={0}
-        >
+        <SongList cellPadding={0} cellSpacing={0}>
           <thead>
             <th />
             <th>TITLE</th>
             <th>ARTIST</th>
             <th>ALBUM</th>
             <th>
-              <img
-                src={ClockIcon}
-                alt="Duration"
-              />
+              <img src={ClockIcon} alt="Duration" />
             </th>
           </thead>
           <tbody>
@@ -128,10 +119,7 @@ class Playlist extends Component {
                   playing={currentSong && currentSong.id === song.id}
                 >
                   <td>
-                    <img
-                      src={PlusIcon}
-                      alt="Add"
-                    />
+                    <img src={PlusIcon} alt="Add" />
                   </td>
                   <td>{song.title}</td>
                   <td>{song.author}</td>

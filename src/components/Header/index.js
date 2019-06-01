@@ -9,10 +9,7 @@ const Header = () => (
     </Search>
 
     <User>
-      <img
-        src="https://avatars1.githubusercontent.com/u/15328398?v=4"
-        alt="User"
-      />
+      <img src="https://avatars1.githubusercontent.com/u/15328398?v=4" alt="User" />
       Ian Carlos
     </User>
   </Container>
